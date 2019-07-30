@@ -16,3 +16,21 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'v1'], function(){
+    Route::post('/auth/login', 'TokensController@login');
+    Route::post('/auth/refresh', 'TokensController@refreshToken');
+    Route::get('/auth/logout', 'TokensController@logout');
+    Route::get('/lista', 'TokensController@getUsers');
+});
+
+
+/*
+ *
+ * Route::group(['middleware'=> ['jwt.auth'], 'prefix' => 'v1'], function(){
+    Route::post('/auth/refresh', 'TokensController@refreshToken');
+    Route::get('/auth/expire', 'TokensController@expireToken'); // same as logout
+
+});
+
+ */
