@@ -1,2 +1,2 @@
-Example using jwt in laravel 
+Authentication example using jwt in laravel 
 
